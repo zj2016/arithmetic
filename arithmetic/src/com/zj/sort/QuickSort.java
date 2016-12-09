@@ -11,11 +11,8 @@ package com.zj.sort;
  * 		这样就保证了 pivot 的左侧元素都比pivot小  右侧元素都比pivot大
  * 3、然后从2步之后的pivot的位置，将数组分为两个数组，分别递归1、2步骤，直到最后划分的数组大小为1，不可再划分，这排序结束
  */
-public class QuickSort {
+public class QuickSort extends Sort{
 	
-	private static int[] array = {69,0,70,6,38,23,38,24,56,44,26,73,77,30,45,97,65};
-	
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -38,7 +35,8 @@ public class QuickSort {
 			return ;
 		}else{
 			//将数组最右侧元素作为枢纽值，进行快排
-			int pivot = array[right];
+			int pivot = array[right];  //方法一，确定pivot
+			//int pivot = medianOf3(left, right);  // 方法二，三项数据取中获取pivot
 			//找到进一步划分数组的枢纽值的位置
 			int partition = partitionArray(left,right,pivot);
 			//递归的调用排序，分别对根据产生的枢纽值的位置分割产生的左右两个新的数据进行排序
@@ -80,22 +78,26 @@ public class QuickSort {
 	}
 	
 	/**
-	 * 交换数组两个元素位置
+	 * 三项数据取中，获得枢纽值pivot
 	 * @param left
 	 * @param right
+	 * @return
 	 */
-	private void swap(int left, int right){
-		int x = array[left];
-		array[left] = array[right];
-		array[right] = x;
-	}
-	
-	private void sys(){
-		StringBuilder sb = new StringBuilder();
-		for(int a : array){
-			sb.append("" + a).append(",");
+	private int medianOf3(int left,int right){
+		
+		int middle = (left + right) / 2;
+		
+		if(array[left] > array[middle]){
+			swap(left,middle);
 		}
-		System.out.println(sb.toString());
+		if(array[left] > array[right]){
+			swap(left,right);
+		}
+		if(array[middle] > array[right]){
+			swap(middle,right);
+		}
+		swap(middle,right);
+		return array[right];
 	}
 	
 }

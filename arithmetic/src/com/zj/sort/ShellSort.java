@@ -5,14 +5,12 @@ package com.zj.sort;
  * 插入排序改进，增加一个间隔数列（数列中间隔值由  【h = h * 3 + 1】 产生）
  * -- 间隔数列 有多中规则产生，唯一的准则就是最后的最小间隔必须为1
  */
-public class ShellSort {
+public class ShellSort extends Sort{
 
 	public static void main(String[] arg0){
 		
-		int a[] = {25,4,9,1,6,7,13,2,4};
-		
 		ShellSort shellSort = new ShellSort();
-		shellSort.shellSort(a);
+		shellSort.shellSort(array);
 		
 	}
 	
@@ -49,11 +47,7 @@ public class ShellSort {
 			}
 			h = (h -1)/3;
 		}
-		
-		for(int i : a){
-			System.out.print(i + ",");
-		}
-		
+		sys();
 	}
 	
 }

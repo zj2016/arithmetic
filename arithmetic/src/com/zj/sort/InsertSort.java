@@ -4,15 +4,13 @@ package com.zj.sort;
  * @author Administrator
  *
  */
-public class InsertSort {
+public class InsertSort extends Sort{
 
 	
 	public static void main(String[] arg0){ 
 		
-		int a[] = {25,4,9,1,6,7,13,2,4};
-		
 		InsertSort is = new InsertSort();
-		is.insertSort(a);
+		is.insertSort(array);
 		
 	}
 	
@@ -24,7 +22,7 @@ public class InsertSort {
 	 * 4、然后选定下一个标记位，重复上述操作
 	 * @param a
 	 */
-	private void insertSort(int[] a){
+	public void insertSort(int[] a){
 		
 		//从数组第2个元素开始，数组元素依次作为标记位
 		for(int tag = 1; tag < a.length; tag++){
@@ -41,8 +39,6 @@ public class InsertSort {
 			a[in] = temp;
 		}
 		
-		for(int i : a){
-			System.out.print(i + " , ");
-		}
+		sys();
 	}
 }
